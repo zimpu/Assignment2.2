@@ -1,0 +1,71 @@
+[acadgild@localhost ~]$ gedit max-temp.txt
+[acadgild@localhost ~]$ ls
+assignment2.1                                hive-site.xml
+data1                                        max-temp.txt
+data2                                        metastore_db
+derby.log                                    Music
+Desktop                                      Pictures
+Documents                                    pig_1481520355504.log
+Downloads                                    Public
+eclipse                                      Templates
+eclipse-jee-neon-M3-linux-gtk-x86_64.tar.gz  testText.txt
+hadoop                                       Videos
+hdfs:                                        workspace
+hetal.txt
+[acadgild@localhost ~]$ cat max-temp.txt
+10-01-1990,10
+10-01-1991,20
+10-01-1992,30
+10-01-1993,40
+10-01-1994,50
+10-01-1995,60
+10-01-1996,70
+10-01-1997,80
+10-01-1998,90
+10-01-1999,100
+10-01-2000,40
+10-01-2001,30
+10-01-2002,60
+10-01-2003,40
+
+[acadgild@localhost ~]$ pwd
+/home/acadgild
+[acadgild@localhost ~]$ hadoop fs -put max-temp.txt /user/acadgild/hadoop
+17/01/26 06:34:45 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[acadgild@localhost ~]$ jps
+14771 NodeManager
+15605 HMaster
+14665 ResourceManager
+4746 JobHistoryServer
+14363 DataNode
+14236 NameNode
+18301 Jps
+14525 SecondaryNameNode
+[acadgild@localhost ~]$ hadoop fs -ls /user/acadgild/hadoop
+17/01/26 06:35:11 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Found 2 items
+-rw-r--r--   1 acadgild supergroup        198 2017-01-26 06:34 /user/acadgild/hadoop/max-temp.txt
+-rw-r--r--   1 acadgild supergroup        132 2017-01-26 04:55 /user/acadgild/hadoop/word-count
+[acadgild@localhost ~]$ hadoop fs -chmod o-r /user/acadgild/hadoop/max-temp.txt
+17/01/26 06:43:35 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[acadgild@localhost ~]$ hadoop fs -ls /user/acadgild/hadoop
+17/01/26 06:43:45 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Found 2 items
+-rw-r-----   1 acadgild supergroup        198 2017-01-26 06:34 /user/acadgild/hadoop/max-temp.txt
+-rw-r--r--   1 acadgild supergroup        132 2017-01-26 04:55 /user/acadgild/hadoop/word-count
+[acadgild@localhost ~]$ hadoop fs -chmod u+rwx /user/acadgild/hadoop/max-temp.txt
+17/01/26 06:44:38 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[acadgild@localhost ~]$ hadoop fs -ls /user/acadgild/hadoop
+17/01/26 06:44:45 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Found 2 items
+-rwxr-----   1 acadgild supergroup        198 2017-01-26 06:34 /user/acadgild/hadoop/max-temp.txt
+-rw-r--r--   1 acadgild supergroup        132 2017-01-26 04:55 /user/acadgild/hadoop/word-count
+[acadgild@localhost ~]$ hadoop fs -chmod g+wx /user/acadgild/hadoop/max-temp.txt
+17/01/26 06:45:52 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+[acadgild@localhost ~]$ hadoop fs -ls /user/acadgild/hadoop
+17/01/26 06:46:00 WARN util.NativeCodeLoader: Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+Found 2 items
+-rwxrwx---   1 acadgild supergroup        198 2017-01-26 06:34 /user/acadgild/hadoop/max-temp.txt
+-rw-r--r--   1 acadgild supergroup        132 2017-01-26 04:55 /user/acadgild/hadoop/word-count
+[acadgild@localhost ~]$ 
+
